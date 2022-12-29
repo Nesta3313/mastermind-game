@@ -1,29 +1,30 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Play {
 
     private String code;
     private int numberOfGuesses;
 
-    private  Map<String, String> map;
+    private String[] list;
 
     public Play(String code) {
         this.code = code;
         numberOfGuesses = 1;
-        map = new HashMap<>();
+        list = new String[10];
     }
 
 //    public static void main(String[] args) {
-//        Play play = new Play("3425");
-//        String feedBack = play.getFeedBack("4217");
-//        play.populateGuessMap("4217", feedBack);
-//        play.seeGameHistory();
+//        String sb = "";
+//        sb = String.format("my name is %s", "nesta");
+//        System.out.println(sb);
+//        sb = String.format("Age is %s", "37");
+//        System.out.println(sb);
+//
 //    }
 
 
     public String getFeedBack(String guess) {
-        StringBuilder builder = new StringBuilder();
+        String string = "";
 
         int numberCorrect = 0;
         int digitPosition = 0;
@@ -39,23 +40,23 @@ public class Play {
         }
 
         if(digitPosition > 0 || numberCorrect > 0) {
-            builder.append(String.format("You got %s numbers correct and %s digits in the right position", numberCorrect, digitPosition));
+            string = String.format("You got %s number(s) correct and %s digit(s) in the right position", numberCorrect, digitPosition);
         }
 
-        return builder.toString();
+        return string;
     }
 
     public void populateGuessMap(String guess, String feedback) {
         for(int i = 0; i < numberOfGuesses; i++) {
-            map.put(guess, feedback);
+            list[0] = guess;
+            list[1] = feedback;
+
         }
         numberOfGuesses++;
     }
 
     public void seeGameHistory() {
-        for(String key: map.keySet()) {
-            System.out.println("HINT: " + key + " " + map.values());
-        }
+        System.out.println("HINT: " + list[0] + " " + list[1]);
     }
 
 }

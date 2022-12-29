@@ -10,15 +10,6 @@ import java.util.Random;
 import static java.util.Map.entry;
 
 public class ApiCall {
-    static String[][] arr = new String[12][2];
-
-    private static int numGuesses = 0;
-
-    static void addG(String guess, String feedback) {
-        arr[numGuesses][0] = guess;
-        arr[numGuesses][1] = feedback;
-        numGuesses++;
-    }
 
     private static final String CODE_URL = "https://www.random.org/integers/";
 
