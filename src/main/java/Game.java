@@ -20,11 +20,10 @@ public class Game {
 
             while(turn < REMAINING_GUESS) {
 
-                System.out.printf("Guess the Mastermind code. Choose %d digits between 0 and %d inclusive. Digits can be repeated", NUMBER, UPPERBOUND);
+                System.out.println(String.format("Guess the Mastermind code. Choose %d digits between 0 and %d inclusive. " +
+                        "Digits can be repeated, You have %d guesses left",  NUMBER, UPPERBOUND, REMAINING_GUESS - turn));
 
-                System.out.println(String.format("You have %d guesses left", REMAINING_GUESS - turn));
-
-                System.out.print("Enter your guess: ");
+                System.out.println("Enter your guess: ");
                 String guessedNum = input.nextLine().trim();
                 if (!guessedNum.matches("\\d{" + NUMBER + "}")) {
                     System.out.println("Please enter a valid number of " + NUMBER + " digits.");
@@ -49,12 +48,14 @@ public class Game {
 
             }
 
-            System.out.println("You ran out of turns: ");
+            System.out.println("You ran out of turns");
             System.out.println(String.format("The code was %s", code));
             System.out.print("Play again, Y/N? ");
+
             String choice = input.nextLine().trim().toLowerCase();
             if (choice.equals("n")) {
                 System.out.println("Game Over!");
+                play.displayTimeTaken();
                 break;
             }
 

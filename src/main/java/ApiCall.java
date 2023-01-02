@@ -3,11 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
-
-import static java.util.Map.entry;
 
 public class ApiCall {
 
