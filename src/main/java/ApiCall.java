@@ -3,16 +3,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Random;
 
 public class ApiCall {
 
-    public static void main(String[] args) {
-        System.out.println(generateCode(4, 8));
-    }
-
     private static final String CODE_URL = "https://www.random.org/integers/";
 
-    public static String generateCode(int number, int max) {
+    public static String generateNonApiCode(int number, int max) {
+        StringBuilder builder = new StringBuilder();
+
+        Random random = new Random();
+        int count = 0;
+        while(count < number) {
+            builder.append(random.nextInt(max + 1));
+            count++;
+        }
+
+        return builder.toString();
+    }
+
+    public static String generateApiCode(int number, int max) {
         // define the parameters, or just hardcode the already known constants from instruction
 
         String parameters = "?num=" + number + "&min=0&max="
@@ -37,14 +47,13 @@ public class ApiCall {
 
             bufferedReader.close();
 
-            //System.out.println(stringBuilder.toString());
-
             //replace extra spaces with "" and \t with ""
             return stringBuilder.toString().replace(" ", "").replace("\t", "");
 
 
         } catch (IOException e) {
-            return null;
+            return generateNonApiCode(number, max);
+
         }
     }
 }
