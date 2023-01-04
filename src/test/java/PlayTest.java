@@ -13,7 +13,7 @@ class PlayTest {
     @BeforeEach
     void setup() {
         code = "2345";
-        play = new Play(code);
+        play = new Play(code, 0);
     }
 
     @Test
@@ -22,11 +22,11 @@ class PlayTest {
 
         String guess = code;
 
-        String expected = "You got 4 numbers correct and 4 digits in the right position";
+        String expected = "You got 4 digit(s) in the right position";
 
         String actual = play.getFeedBack(guess);
 
-        assertThat(expected).matches(actual);
+        assertThat(expected).isEqualTo(actual);
     }
 
     @Test
@@ -34,11 +34,11 @@ class PlayTest {
     void oneNumbersAndDigitFoundInRightPosition() {
         String guess = "6310";
 
-        String expected = "You got 1 numbers correct and 1 digits in the right position";
+        String expected = "You got 1 digit(s) in the right position";
 
         String actual = play.getFeedBack(guess);
 
-        assertThat(expected).matches(actual);
+        assertThat(expected).isEqualTo(actual);
 
     }
 

@@ -47,8 +47,6 @@ public class ApiCall {
 
             bufferedReader.close();
 
-            //System.out.println(stringBuilder.toString());
-
             //replace extra spaces with "" and \t with ""
             return stringBuilder.toString().replace(" ", "").replace("\t", "");
 
